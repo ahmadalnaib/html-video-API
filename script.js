@@ -30,13 +30,26 @@ function updateIcon()
 //function for update progress
 function updateProgress()
 {
+progress.value = (video.currentTime / video.duration) * 100;
 
+
+// get min
+let min=Math.floor(video.currentTime / 60);
+if(min < 10) {
+  min ='0'+String(min);
+}
+  // get sec
+let sec=Math.floor(video.currentTime % 60);
+if(sec < 10) {
+  sec ='0'+String(sec);
+}
+timestamp.innerHTML=`${min}:${sec}`;
 }
 
 //functions for progress video and timestamp
 function videoProgress()
 {
-
+video.currentTime= (+progress.value * video.duration) / 100;
 }
 
 //functions for stop video
